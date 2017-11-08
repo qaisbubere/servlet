@@ -1,0 +1,339 @@
+<html>
+<title>
+Gmail
+</title>
+<head>
+<script>
+
+function validate(){
+	if(document.myForm.firstname.value==""){
+		document.getElementById("firstNameMsg").innerHTML="*Required";
+		return false;
+	}
+	var onlyChar = /[a-zA-Z]/;
+	if(!onlyChar.test(document.myForm.firstname.value)){
+		alert("first name should be alphabets only");
+			return false;
+	}
+
+	if(document.myForm.lastName.value==""){
+		document.getElementById("lastNameMsg").innerHTML="*Required";
+		return false;
+	}
+	var onlyChar = /[a-zA-Z]/;
+	if(!onlyChar.test(document.myForm.lastName.value)){
+		alert("last name should be 	alphabets only");
+			return false;
+	}
+
+	if(document.myForm.userName.value==""){
+		document.getElementById("username").innerHTML="*Required";
+		return false;
+	}
+	if(document.myForm.Password1.value==""){
+			document.getElementById("password1").innerHTML="*Required";
+			return false;
+	}
+	if(document.myForm.Password2.value==""){
+			document.getElementById("password2").innerHTML="*Required";
+			return false;
+	}
+
+	var pass1=document.getElementById("Password1").value;
+	var pass2 =document.getElementById("Password2").value;
+	if(pass1!=pass2){
+		alert("both the passwords doesn't match");
+		return false;
+	}
+ if(document.myForm.month.value==""){
+			document.getElementById("Month").innerHTML="*Required";
+			return false;
+	}
+	if(document.myForm.day.value==""){
+			document.getElementById("Day").innerHTML="*Required";
+			return false;
+	}
+	if(document.myForm.year.value==""){
+			document.getElementById("Year").innerHTML="*Required";
+			return false;
+	}
+	if(document.myForm.gender.value==""){
+			document.getElementById("Gender").innerHTML="*Required";
+			return false;
+	}
+	if(document.myForm.number.value==""){
+			document.getElementById("Number").innerHTML="*Required";
+			return false;
+	}
+		return true;
+	}
+
+
+</script>
+</head>
+
+<body>
+<form method="post" action="Validate" onSubmit="return validate()" name="myForm">
+<div class="header">
+<header>
+<img src = "/home/bridgeit/Desktop/week-4/googlepng.png" class= "image" alt="google">
+<a href="/home/bridgeit/Desktop/week-4/gmailLoginPage.html"><button type="button" class ="signIn"> Sign in</button><a>
+</header>
+</div>
+<font class="text">  Create your Google Account </font>
+
+<div class="box">
+<font style="position:absolute; font-size:12px; left:785px; top:220px; font-family:Arial"><b>Name</b></font>
+
+<input id="firstname" name="firstname" type="text" class="firstName" placeholder="   First" minlength="1" maxlength="15" autofocus></input>
+<p id="firstNameMsg" style="position:absolute; top:255px; left:790px; font-size:13px; color:red"></p>
+
+<input id="lastName" name="lastname"type="text" class="lastName" placeholder="   Last" minlength="1" maxlength="15"></input>
+<p id="lastNameMsg" style="position:absolute; top:255px; left:950px; font-size:13px; color:red"></p>
+
+<font style="position:absolute; font-size:13px; left:785px; top:288px; font-family:Arial"><b>Choose your username</b></font>
+<input id="userName" name="username" type="text" class="username" maxlength="27"><font style="position:absolute; left:1009px; top:318px; font-size:12px; color:#999">@gmail.com</font></input>
+<p id="username" style="position:absolute; top:325px; left:787px; font-size:13px; color:red"></p>
+
+<font style="position:absolute; font-size:13px; left:785px; top:356px; font-family:Arial; font-weight:bolder">Create a password</font>
+<input id="Password1" name="password" type="password" class="createPassword" minlength="8" maxlength="15"></input>
+<p id="password1" style="position:absolute; top:393px; left:787px; font-size:13px; color:red"></p>
+
+<font style="position:absolute; font-size:13px; left:785px; top:422px; font-family:Arial; font-weight:bolder">Confirm your password</font>
+<input id="Password2" type="password" class="confirmPassword" minlength="8" maxlength="15" ></input>
+<p id="password2" style="position:absolute; top:460px; left:790px; font-size:13px; color:red"></p>
+
+<font style="position:absolute; font-size:13px; left:785px; top:490px; font-family:Arial; font-weight:bolder">Birthday</font>
+<p id="Month" style="position:absolute; top:525px; left:790px; font-size:13px; color:red"></p>
+
+<input id="day" name="day" type="number" class="day" placeholder="   Day" min="1" max="31" maxlength="2"></input>
+<p id="Day" style="position:absolute; top:525px; left:927px; font-size:13px; color:red"></p>
+
+<input id="year" name="year" type="number" class="year" placeholder="   Year" min="1800" max="1999" maxlength="4"></input>
+<p id="Year" style="position:absolute; top:525px; left:1000px; font-size:13px; color:red"></p>
+
+<font style="position:absolute; font-size:13px; left:785px; top:557px; font-family:Arial; font-weight:bolder">Gender</font>
+<p id="Gender" style="position:absolute; top:597px; left:790px; font-size:13px; color:red"></p>
+
+<font style="position:absolute; font-size:13px; left:785px; top:630px; font-family:Arial; font-weight:bolder" >Mobile phone</font>
+<input id="number" name="mobilenumber" type="number" class="phone" min="0000000000" max="9999999999"></input>
+<p id="Number" style="position:absolute; top:670px; left:790px; font-size:13px; color:red"></p>
+
+<font style="position:absolute; font-size:13px; left:785px; top:704px; font-family:Arial; font-weight:bolder">Your current email address</font>
+<input name= "currentemail" type="text" class="emailAddress"></input>
+
+<font style="position:absolute; font-size:13px; left:785px; top:775px; font-family:Arial; font-weight:bolder">Location </font>
+<img src="/home/bridgeit/Desktop/week-4/background.png" class="bgImage">
+
+<a href="gmailLoginPage.html"><button id="button" type="submit" class ="nextStep">Next step</button></a>
+<p id="demo"></p>
+
+
+<select id="month" name="month" style="position:absolute;list-style-position:outside; top:510px; left:785px;width:130px; height:29px ;border:1px solid #e5e5e5 ;font-size:12px; font-weight:bolder; color:#555">
+<option value="">Month</option>
+<option value="January">January</option>
+<option value="Febuary">Febuary</option>
+<option value="March">March</option>
+<option value="April">April</option>
+<option value="May">May</option>
+<option value="June">June</option>
+<option value="July">July</option>
+<option value="August">August</option>
+<option value="September">September</option>
+<option value="Octobgenderer">October</option>
+<option value="November">November</option>
+<option value="December">December</option>
+</select>
+
+
+<select id="gender" name="gender" role="optionbox" style="position:absolute; top:580px; left:785px;width:310px; height:29px ;border:1px solid #e5e5e5 ;font-size:12px; font-weight:bolder; color:#555">
+<option value="">  I am...</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+</select>
+
+<select name="location" role="optionbox" style="position:absolute; top:800px; left:785px;width:310px; height:29px ;border:1px solid #e5e5e5 ;font-size:12px; font-weight:bolder; color:#555">
+<option value=""> India </option>
+<option value="SriLanka">SriLanka</option>
+<option value="Bangladesh">Bangladesh</option>
+</select>
+</div>
+
+</form>
+</body>
+
+<style>
+.header{
+	width: 1320px;
+	height: 71px;
+	background-color: #f1f1f1 ;
+	margin-left: -0.6%;
+	margin-top: -0.6%;
+	box-shadow: 1px 1px 1px #dbd9d9
+
+
+}
+.image{
+	position:absolute;
+	height:47px;
+	width:115px;
+	left:40px;
+	top:10px;
+}
+.signIn{
+	position:absolute;
+	margin-left:91%;
+	margin-top:20px;
+	font-weight:1000;
+	background-color:#4285f4;
+	color:white;
+	padding:7px 13px;#f1f1f1
+	font-size:13px;
+	border:15px;
+	border-radius:2px;
+	font-family:FreeSans;
+}
+.box{
+	width: 360px;
+	height: 700px;
+	background-color:#f1f1f1 ;
+	margin-left: 59%;
+	margin-top: 9.8%;
+
+}
+.text{
+	position:absolute;
+	top:100px;
+	left:408px;
+	width:780px;
+	font-size:38px;
+	font-weight:lighter;
+	font-family:Laksaman;
+	color:#555;
+}
+.firstName{
+	position: absolute;
+	top:240px;
+	left:785px;
+	width:150px;
+	height:29px;
+	border-radius: 1px;
+	border:1px solid #cccccc;
+	font-size: 13px;
+	font-weight:normal;
+	text-align:justify;
+}
+.lastName{
+	position: absolute;
+	top:240px;
+	left:944px;
+	width:150px;
+	height:29px;
+	border-radius:1px;
+	border:1px solid #cccccc;
+	font-size: 13px;
+	font-weight:normal;
+	text-align:justify;
+}
+.username{
+	position: absolute;
+	top:309px;
+	left:785px;
+	width:310px;
+	height:29px;
+	border-radius: 1px;
+	border:1px solid #cccccc;
+	font-size: 13px;
+	font-weight:normal;
+}
+.createPassword{
+	position: absolute;
+	top:377px;
+	left:785px;
+	width:310px;
+	height:29px;
+	border-radius: 1px;
+	border:1px solid #cccccc;
+	font-size: 13px;
+	font-weight:normal;
+}
+.confirmPassword{
+	position: absolute;
+	top:442px;
+	left:785px;
+	width:310px;
+	height:29px;
+	border-radius: 1px;
+	border:1px solid #cccccc;
+	font-size: 13px;
+	font-weight:normal;
+}
+.day{
+	position: absolute;
+	top:510px;
+	left:925px;
+	width:60px;
+	height:29px;
+	border-radius: 1px;
+	border:1px solid #cccccc;
+	font-size: 13px;
+	font-weight:normal;
+}
+.year{
+	position: absolute;
+	top:510px;
+	left:995px;
+	width:100px;
+	height:29px;
+	border-radius: 1px;
+	border:1px solid #cccccc;
+	font-size: 13px;
+	font-weight:normal;
+}
+.phone{
+	position: absolute;
+	top:655px;
+	left:785px;
+	width:312px;
+	height:29px;
+	border-radius: 1px;
+	border:1px solid #cccccc;
+	font-size: 13px;
+	font-weight:normal;
+}
+.emailAddress{
+	position: absolute;
+	top:725px;
+	left:785px;
+	width:312px;
+	height:29px;
+	border-radius: 1px;
+	border:1px solid #cccccc;
+	font-size: 13px;
+	font-weight:normal;
+}
+.monthDropDown{
+	background-color: white;
+	box-shadow: 1px 1px 5px #f1f1f1;
+}
+.bgImage{
+		height:490px;
+		width:525px;
+		margin-left:-580px;
+		top:50px;
+}
+.nextStep{
+	position: absolute;
+	top:850px;
+	left:1030px;
+	padding:9px 7px ;
+	border-radius: 2px;
+	background-color: #4d90fe;
+	font-size: 11px;
+	color:white;
+	border:1px;
+	font-family: Arial;
+	font-weight: bold;
+}
+</style>
+</html>
