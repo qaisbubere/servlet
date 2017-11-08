@@ -67,6 +67,8 @@ public class Validate extends HttpServlet {
 				pst.setString(10, currentemail);
 				pst.setString(11, location);
 
+				out.print(firstname);
+				System.out.println();
 				out.print(lastname);
 				out.print(username);
 				out.print(password);
