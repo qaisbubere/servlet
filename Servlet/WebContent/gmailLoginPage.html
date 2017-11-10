@@ -1,33 +1,46 @@
 <html>
 <head>
+<script src="jquery-3.2.1.js"></script>
 	<script>
 
-	function required()
+	$(document).ready(function(){
+	$('#button').click(function(){
+		   if($('#email').val() == ''){
+			   alert('invalid');
+			   return false;
+			}
+		   else{
+			   return true;
+		   }
+		});
+	
+	});
+	/*function required()
 		{
 			if(document.formName.email.value=="")
 			 {
  				document.getElementById("warning").innerHTML = "*Required field";
  				return false;
 				}
-				return true;
-		 }
+				return true;*/
+		 
 		 </script>
 	 </head>
 <title>
 Gmail
 </title>
 
-<body background="/home/bridgeit/Desktop/week-4/bg.jpg">
-<form action="gmailPasswordPage.html" onSubmit="return required()" name="formName">
+<body background="bg.jpg" id="body">
+<form method="post" action="LoginValidate" onSubmit="return function()" name="formName" id="form">
 
 <!--<img src = "/home/bridgeit/Desktop/week-4/bgimage.jpg" height="650" width ="1500" alt="image">
 <center><img src = "/home/bridgeit/Desktop/week-4/whitebg.png" style="position:absolute; height:500px; width:450px; top:90px; left:430px"  alt="image"></center>-->
-<img src = "/home/bridgeit/Desktop/week-4/google.png" style="position:absolute; height:33px; width:80px; left:455px; top:130px" alt="google">
+<img src = "google.png" style="position:absolute; height:33px; width:80px; left:455px; top:130px" alt="google">
 
-<div class="div1">
+<div class="div1" id="div">
 <h1 class="headerclass">Sign in </h1>
 <h1 class="subheading">to continue to Gmail</h1>
-<input name="email" class="username" type="email" placeholder="Email or Phone" value="">
+<input id="email" name="email" class="username" type="email" placeholder="Email or Phone" value="">
 <hr class="line">
 <p id="warning" style="position:absolute; left:460px;top:305px; color:red; font-size:15px; font-family:FreeSans"></p>
 <button type="button" class ="forgotPassword"> Forgot email?</button>
@@ -92,7 +105,7 @@ Gmail
 	margin-left:6%;
 	margin-top:152px;
 	width:109px;
-	font-weight:1000;
+	font-weight:400;
 	color:#4285f4;
 	border:none;
 	background:none;
@@ -103,7 +116,7 @@ Gmail
 	margin-left:6%;
 	margin-top:40px;
 	width:109px;
-	font-weight:1000;
+	font-weight:400;
 	color:#4285f4;
 	border:none;
 	background:none;

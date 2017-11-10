@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -77,8 +78,9 @@ public class Validate extends HttpServlet {
 				out.print(year);
 				int i=pst.executeUpdate();
 				if(i>0){
-					System.out.println("entered successfully");
-
+					//System.out.println("entered successfully");
+					RequestDispatcher rd=request.getRequestDispatcher("gmailLoginPage.html");  
+			        rd.forward(request, response);
 				}
 				else{
 					System.out.println("failed");
@@ -88,14 +90,5 @@ public class Validate extends HttpServlet {
 				e.printStackTrace();
 			}
 			}
-
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-/	 */
-	protected void doget(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
 
 }
