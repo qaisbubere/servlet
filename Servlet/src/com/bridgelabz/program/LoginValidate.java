@@ -37,8 +37,11 @@ public class LoginValidate extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		String dbusername;
+		int found=0;
+		String msg="Invalid UserName";
+		//response.setContentType("text/html");
+		//PrintWriter out = response.getWriter();
 		String username = request.getParameter("email");
 
 		System.out.println(request.getParameter("username"));
@@ -58,14 +61,20 @@ public class LoginValidate extends HttpServlet {
 			HttpSession session = request.getSession();
 			request.setAttribute("email", username);
 			
+			
 			while(rs.next()){
-			String dbusername = rs.getString("username");
+			dbusername = rs.getString("username");
 			if(dbusername.equals(username)){
 				RequestDispatcher rd=request.getRequestDispatcher("gmailPasswordPage.jsp");  
 		        rd.forward(request, response);
 			}
-			
+			else{
+				found++;
 			}
+			}
+			if(found>0){
+				response.getWriter().print("{success:invalid}");
+			}		
 			
 		}
 		catch(Exception e){

@@ -1,21 +1,37 @@
 <html>
 <head>
 <script src="jquery-3.2.1.js"></script>
-	<script>
+<script src = "ajax.js"></script>	
+<script>
 
-	$(document).ready(function(){
+	/*$(document).ready(function(){
 	$('#button').click(function(){
 		   if($('#email').val() == ''){
-			   alert('invalid');
+			   alert('Username field cannot be empty');
 			   return false;
 			}
 		   else{
 			   return true;
 		   }
-		});
-	
-	});
-	/*function required()
+		});*/
+		function validate(){
+			$(document).ready(function(){
+			//$('#form').bind('submit',function(event){
+			$.ajax({
+				type:"post",
+				url:"LoginValidate",
+				data:{email:getElementById("email").value},
+				success:function(response){	
+					if(response=="{success:invalid}")
+					$('#demo').html('Invalid UserName');
+					return false;
+				}
+				});
+				
+			});
+			});
+		}
+	/*function required()	
 		{
 			if(document.formName.email.value=="")
 			 {
@@ -31,17 +47,18 @@ Gmail
 </title>
 
 <body background="bg.jpg" id="body">
-<form method="post" action="LoginValidate" onSubmit="return function()" name="formName" id="form">
+<form method="post" action="LoginValidate" onsubmit="return validate()" name="formName" id="form">
 
 <!--<img src = "/home/bridgeit/Desktop/week-4/bgimage.jpg" height="650" width ="1500" alt="image">
 <center><img src = "/home/bridgeit/Desktop/week-4/whitebg.png" style="position:absolute; height:500px; width:450px; top:90px; left:430px"  alt="image"></center>-->
 <img src = "google.png" style="position:absolute; height:33px; width:80px; left:455px; top:130px" alt="google">
 
-<div class="div1" id="div">
+<div class="div1" id="div" name="div">
 <h1 class="headerclass">Sign in </h1>
 <h1 class="subheading">to continue to Gmail</h1>
 <input id="email" name="email" class="username" type="email" placeholder="Email or Phone" value="">
 <hr class="line">
+<p id="demo"><p>
 <p id="warning" style="position:absolute; left:460px;top:305px; color:red; font-size:15px; font-family:FreeSans"></p>
 <button type="button" class ="forgotPassword"> Forgot email?</button>
 <p></p>
