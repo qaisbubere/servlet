@@ -55,11 +55,11 @@ public class LoginValidate extends HttpServlet {
 			
 			if(r.next()){
 				String fname = r.getString("firstname");
-				request.setAttribute("firstname", fname);
+				request.setAttribute("firstname",fname);
 			}
-		
+	
 			HttpSession session = request.getSession();
-			request.setAttribute("email", username);
+			session.setAttribute("email", username);
 			
 			
 			while(rs.next()){
@@ -72,9 +72,10 @@ public class LoginValidate extends HttpServlet {
 				found++;
 			}
 			}
+			
 			if(found>0){
-				response.getWriter().print("{success:invalid}");
-			}		
+				response.sendRedirect("gmailLoginPage.jsp");
+			}
 			
 		}
 		catch(Exception e){

@@ -4,7 +4,7 @@
 <script src = "ajax.js"></script>	
 <script>
 
-	/*$(document).ready(function(){
+	$(document).ready(function(){
 	$('#button').click(function(){
 		   if($('#email').val() == ''){
 			   alert('Username field cannot be empty');
@@ -13,33 +13,9 @@
 		   else{
 			   return true;
 		   }
-		});*/
-		function validate(){
-			$(document).ready(function(){
-			//$('#form').bind('submit',function(event){
-			$.ajax({
-				type:"post",
-				url:"LoginValidate",
-				data:{email:getElementById("email").value},
-				success:function(response){	
-					if(response=="{success:invalid}")
-					$('#demo').html('Invalid UserName');
-					return false;
-				}
-				});
-				
-			});
-			});
-		}
-	/*function required()	
-		{
-			if(document.formName.email.value=="")
-			 {
- 				document.getElementById("warning").innerHTML = "*Required field";
- 				return false;
-				}
-				return true;*/
-		 
+		});
+	});
+	
 		 </script>
 	 </head>
 <title>
@@ -47,7 +23,7 @@ Gmail
 </title>
 
 <body background="bg.jpg" id="body">
-<form method="post" action="LoginValidate" onsubmit="return validate()" name="formName" id="form">
+<form method="post" action="LoginValidate" name="formName" id="form">
 
 <!--<img src = "/home/bridgeit/Desktop/week-4/bgimage.jpg" height="650" width ="1500" alt="image">
 <center><img src = "/home/bridgeit/Desktop/week-4/whitebg.png" style="position:absolute; height:500px; width:450px; top:90px; left:430px"  alt="image"></center>-->

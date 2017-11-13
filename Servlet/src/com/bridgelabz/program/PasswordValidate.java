@@ -7,18 +7,20 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mysql.jdbc.Messages;
 
 /**
  * Servlet implementation class PasswordValidate
  */
-@WebServlet("/PasswordValidate")
+//@WebServlet("/PasswordValidate")
 public class PasswordValidate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,36 +33,32 @@ public class PasswordValidate extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		String username = (String) request.getAttribute("email");
-		String password = request.getParameter("password");
-		
+		HttpSession ss = request.getSession();
+		String username = (String)ss.getAttribute("email");
+		String password = (String)request.getParameter("password");
+		out.print(username);
+		out.println(password);
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection object =  DriverManager.getConnection("jdbc:mysql://localhost:3306/gmailPage","root","shezan95");
-			PreparedStatement pst =  object.prepareStatement("select password from signup_details where username = '"+username+"'");
+			/*PreparedStatement pst =  object.prepareStatement("select password from signup_details where username = '"+username+"'");*/
+			PreparedStatement pst =  object.prepareStatement("select username,password from signup_details");
 			ResultSet rs =  pst.executeQuery();
 			
 			while(rs.next()){
 				String pass = rs.getString("password");
-				if(!pass.equals(password))
+				String user = rs.getString("username");
+				if(pass.equals(password) && user.equals(username))
 				{
-				
+					RequestDispatcher rd=request.getRequestDispatcher("welcome.html");  
+			        rd.forward(request, response);
 				}
 			}
-			
 		}
 		catch(Exception e){
 			

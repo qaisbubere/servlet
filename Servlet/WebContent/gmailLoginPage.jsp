@@ -3,65 +3,52 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<script>
+<script src="jquery-3.2.1.js"></script>
+<script src = "ajax.js"></script>	
+<script>
 
-	/*function required(){
-
-		if(document.formName.identifier.value=="")
-		{
-			document.getElementById("demo").innerHTML="*Required field";
-			return false;
-		}
-		return true;
-	}*/
-	
-	
 	$(document).ready(function(){
-		$('#button').click(function(){
-			   if($('#identifier').val() == ''){
-				   alert('Password field cannot be empty');
-				   return false;
-				}
-			   else{
-				   return true;
-			   }
-			});
+	$('#button').click(function(){
+		   if($('#email').val() == ''){
+			   alert('Username field cannot be empty');
+			   return false;
+			}
+		   else{
+			   return true;
+		   }
 		});
-
-
-	</script>
-</head>
+	});
+	
+		 </script>
+	 </head>
 <title>
 Gmail
 </title>
 
-<body background="bg.jpg">
-<form method ="get" name="formName" action="PasswordValidate">
+<body background="bg.jpg" id="body">
+<form method="post" action="LoginValidate" name="formName" id="form">
 
 <!--<img src = "/home/bridgeit/Desktop/week-4/bgimage.jpg" height="650" width ="1500" alt="image">
 <center><img src = "/home/bridgeit/Desktop/week-4/whitebg.png" style="position:absolute; height:500px; width:450px; top:90px; left:430px"  alt="image"></center>-->
-
 <img src = "google.png" style="position:absolute; height:33px; width:80px; left:455px; top:130px" alt="google">
 
-
-<div class="div1">
-<%
-HttpSession ss = request.getSession();
-//String var = (String)ss.getAttribute("email");
-String firstname = (String)request.getAttribute("firstname");
-%>
-
-<h1 class="headerclass">Hi <%out.print(firstname);%> </h1>
-<!-- <h1 class="subheading"></h1> -->
-<input id="identifier" class="username" type="password" name="password" placeholder="Enter your password">
+<div class="div1" id="div" name="div">
+<h1 class="headerclass">Sign in </h1>
+<h1 class="subheading">to continue to Gmail</h1>
+<input id="email" name="email" class="username" type="email" placeholder="Email or Phone" value="">
 <hr class="line">
-<p id="demo" style="position:absolute; left:460px;top:305px; color:red; font-size:15px; font-family:FreeSans"></p>
-<button type="button" class ="forgotPassword"> Forgot password?</button>
+
+<p id="demo"><p>
+<p id="warning" style="position:absolute; left:460px;top:305px; color:red; font-size:15px; font-family:FreeSans"></p>
+<button type="button" class ="forgotPassword"> Forgot email?</button>
 <p></p>
-<button type="submit" class ="next"> NEXT </button>
+<button type="button" class ="moreOption"> More options </button>
+<p></p>
+<button id="button" type="submit" class ="next" > NEXT </button>
 <font style="position:absolute; top:610px; left:423px ;width:200px; font-size:12px; font-family:FreeSans">English (United States)</font>
 <font style="position:absolute; top:610px; left:710px ;width:250px; font-size:13px; font-family:FreeSans; color:grey" >Help &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Privacy &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Terms</font>
 </div>
+
 
 </form>
 </body>
@@ -72,7 +59,7 @@ String firstname = (String)request.getAttribute("firstname");
 	background-color:white;
 	margin-left: 32.2%;
 	margin-top: 6.8%;
-	box-shadow: 1px 1px 5px #888888
+	box-shadow: 1px 1px 5px #888888;
 
 }
 
@@ -112,20 +99,30 @@ String firstname = (String)request.getAttribute("firstname");
 }
 .forgotPassword{
 	position:relative;
-	margin-left:6.3%;
-	margin-top:184px;
-	width:139px;
+	margin-left:6%;
+	margin-top:152px;
+	width:109px;
 	font-weight:400;
 	color:#4285f4;
 	border:none;
 	background:none;
-	font-size:14px;
+	font-size:15px;
 }
-
+.moreOption{
+	position:relative;
+	margin-left:6%;
+	margin-top:40px;
+	width:109px;
+	font-weight:400;
+	color:#4285f4;
+	border:none;
+	background:none;
+	font-size:15px;
+}
 .next{
 	position:relative;
 	margin-left:72%;
-	margin-top:-12%;
+	margin-top:-13%;
 	font-size:15px;
 	background-color:#4285f4;
 	border:15px;
@@ -139,12 +136,9 @@ body{
 background-position:center;
 background-size:cover;
 background-repeat:no-repeat;
-
 }
 
-
-
-
 </style>
+
 
 </html>
